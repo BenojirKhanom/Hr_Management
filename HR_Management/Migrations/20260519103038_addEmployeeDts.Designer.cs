@@ -4,6 +4,7 @@ using HR_Management.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR_Management.Migrations
 {
     [DbContext(typeof(Appdbcontext))]
-    partial class AppdbcontextModelSnapshot : ModelSnapshot
+    [Migration("20260519103038_addEmployeeDts")]
+    partial class addEmployeeDts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,151 +104,6 @@ namespace HR_Management.Migrations
                     b.HasIndex("religionId");
 
                     b.ToTable("EmployeeInfo", "HR");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.EmploymentDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ActivityStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BranchName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("EmployeeStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("JoiningDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("departmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("designationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("employeeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("departmentId");
-
-                    b.HasIndex("designationId");
-
-                    b.HasIndex("employeeId");
-
-                    b.ToTable("EmploymentDetails", "HR");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.ParentsInformation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FathersMobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FathersNID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FathersName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FathersPassportNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MothersMobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MothersNID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MothersName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MothersPassportNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("employeeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("employeeId");
-
-                    b.ToTable("ParentsInformation", "HR");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.SocialMediaInformation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FacebookUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GitHubUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InstagramUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LinkedInUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TwitterUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("WebsiteUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("employeeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("employeeId");
-
-                    b.ToTable("SocialMediaInformation", "HR");
                 });
 
             modelBuilder.Entity("HR_Management.Data.MasterData.BloodGroup", b =>
@@ -379,45 +237,6 @@ namespace HR_Management.Migrations
                     b.Navigation("designation");
 
                     b.Navigation("religion");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.EmploymentDetails", b =>
-                {
-                    b.HasOne("HR_Management.Data.MasterData.Department", "department")
-                        .WithMany()
-                        .HasForeignKey("departmentId");
-
-                    b.HasOne("HR_Management.Data.MasterData.Designation", "designation")
-                        .WithMany()
-                        .HasForeignKey("designationId");
-
-                    b.HasOne("HR_Management.Data.Employee.EmployeeInfo", "employee")
-                        .WithMany()
-                        .HasForeignKey("employeeId");
-
-                    b.Navigation("department");
-
-                    b.Navigation("designation");
-
-                    b.Navigation("employee");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.ParentsInformation", b =>
-                {
-                    b.HasOne("HR_Management.Data.Employee.EmployeeInfo", "employee")
-                        .WithMany()
-                        .HasForeignKey("employeeId");
-
-                    b.Navigation("employee");
-                });
-
-            modelBuilder.Entity("HR_Management.Data.Employee.SocialMediaInformation", b =>
-                {
-                    b.HasOne("HR_Management.Data.Employee.EmployeeInfo", "employee")
-                        .WithMany()
-                        .HasForeignKey("employeeId");
-
-                    b.Navigation("employee");
                 });
 #pragma warning restore 612, 618
         }
