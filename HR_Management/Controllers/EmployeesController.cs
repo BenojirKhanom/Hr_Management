@@ -18,7 +18,6 @@ namespace HR_Management.Controllers
             return View();
         }
         [HttpPost]
-        [HttpPost]
         public IActionResult Create(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
