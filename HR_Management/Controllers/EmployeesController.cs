@@ -23,7 +23,7 @@ namespace HR_Management.Controllers
             if (ModelState.IsValid)
             {
                 // Employee Details save
-                _Context.Employee_Ditailse.Add(model.EmployeeDetails);
+                _Context.EmployeeDitailse.Add(model.EmployeeDetails);
 
                 // Social Media save
                 _Context.EmployeeSocialMedia.Add(model.EmployeeSocialMedia);
