@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HR_Management.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HR_Management.Data
 {
@@ -10,7 +11,8 @@ namespace HR_Management.Data
         {
 
         }
-        public DbSet<Models.Employee_Ditailse> Employees { get; set; }
-        public DbSet<Models.EmployeeSocialMedia> EmployeeSocialMedias { get; set; }
+        public DbSet<Employee_Ditailse> Employee_Ditailse { get; set; }
+
+        public DbSet<EmployeeSocialMedia> EmployeeSocialMedia { get; set; }
     }
 }

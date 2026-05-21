@@ -1,1 +1,27 @@
-﻿
+﻿@model EmployeeViewModel
+
+<form asp-action="Create" method="post">
+
+    <h2>Employee Details</h2>
+
+    <input asp-for="EmployeeDetails.JoiningDate" type="date" />
+
+    <input asp-for="EmployeeDetails.Department" placeholder="Department" />
+
+    <input asp-for="EmployeeDetails.JoinDesignation" placeholder="Designation" />
+ 
+    <h2>Social Media</h2>
+
+    <input asp-for="EmployeeSocialMedia.LinkedInProfileURL" placeholder="LinkedIn" />
+
+    <input asp-for="EmployeeSocialMedia.FacebookProfileURL" placeholder="Facebook" />
+
+    <input asp-for="EmployeeSocialMedia.GitHubProfileURL" placeholder="GitHub" />
+
+    <input asp-for="EmployeeSocialMedia.PortfolioURL" placeholder="Portfolio" />
+
+
+
+    <button type="submit">Save</button>
+
+</form>

@@ -1,6 +1,7 @@
 ﻿using HR_Management.Data;
 using HR_Management.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HR_Management.Controllers
 {
@@ -17,18 +18,22 @@ namespace HR_Management.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Employee_Ditailse employee_Ditailse)
+        public IActionResult Create(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _Context.Employees.Add(employee_Ditailse);
+                // Employee Details save
+                _Context.Employee_Ditailse.Add(model.EmployeeDetails);
+
+                // Social Media save
+                _Context.EmployeeSocialMedia.Add(model.EmployeeSocialMedia);
 
                 _Context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
-            return View(employee_Ditailse);
+            return View(model);
         }
     }
 }
