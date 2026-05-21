@@ -4,7 +4,7 @@
     {
        
         
-            public Employee_Ditailse EmployeeDetails { get; set; }
+            public EmployeeDitailse EmployeeDetails { get; set; }
 
             public EmployeeSocialMedia EmployeeSocialMedia { get; set; }
         }
