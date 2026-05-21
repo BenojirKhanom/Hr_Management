@@ -18,14 +18,12 @@ namespace HR_Management.Controllers
             return View();
         }
         [HttpPost]
+        [HttpPost]
         public IActionResult Create(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Employee Details save
                 _Context.EmployeeDitailse.Add(model.EmployeeDetails);
-
-                // Social Media save
                 _Context.EmployeeSocialMedia.Add(model.EmployeeSocialMedia);
 
                 _Context.SaveChanges();
@@ -36,4 +34,5 @@ namespace HR_Management.Controllers
             return View(model);
         }
     }
-}
+    }
+
