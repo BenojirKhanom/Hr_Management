@@ -10,7 +10,5 @@
 
         public string JoinDesignation { get; set; }
 
-        public string EmployeeStatus { get; set; }
-
     }
 }

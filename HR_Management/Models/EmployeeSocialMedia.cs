@@ -8,6 +8,5 @@ namespace HR_Management.Models
         public int Id { get; set; } 
         public string GitHubProfileURL { get; set; }
       
-
     }
 }
