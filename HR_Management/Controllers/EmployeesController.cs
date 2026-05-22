@@ -13,9 +13,6 @@ namespace HR_Management.Controllers
         {
             _Context = Context;
         }
-
-        [HttpGet]
-
         [HttpGet]
         public IActionResult Index()
         {
