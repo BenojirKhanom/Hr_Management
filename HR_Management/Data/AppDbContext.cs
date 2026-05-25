@@ -14,5 +14,6 @@ namespace HR_Management.Data
         public DbSet<EmployeeDitailse> EmployeeDitailse { get; set; }
 
         public DbSet<EmployeeSocialMedia> EmployeeSocialMedia { get; set; }
+        public object EmployeeDetails { get; internal set; }
     }
 }

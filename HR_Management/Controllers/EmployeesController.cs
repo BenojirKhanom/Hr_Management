@@ -16,8 +16,19 @@ namespace HR_Management.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            AppDbContext _Context1 = _Context;
+            var model = new EmployeeViewModel
+            {
+               EmployeeDetails = new EmployeeDitailse(),
+
+                EmployeeSocialMedia = new EmployeeSocialMedia(),
+
+                EmployeesList = _Context1.EmployeeDitailse.ToList()
+            };
+
+            return View(model);
         }
+
         [HttpPost]
         public IActionResult Index(EmployeeViewModel model)
         {
@@ -28,6 +39,7 @@ namespace HR_Management.Controllers
                     JoiningDate = model.EmployeeDetails.JoiningDate,
                     Department = model.EmployeeDetails.Department,
                     JoinDesignation = model.EmployeeDetails.JoinDesignation,
+
                 };
 
                 var social = new EmployeeSocialMedia

@@ -1,20 +1,148 @@
 ﻿@model EmployeeViewModel
 
-<form asp-action="Index" method="post">
+@{
+    ViewData["Title"] = "Employee Form";
+}
 
-    <h2>Employee Details</h2>
+<div class="container mt-5">
 
-    <input asp-for="EmployeeDetails.JoiningDate" type="date" />
+    <div class="card shadow-lg border-0 rounded-4">
 
-    <input asp-for="EmployeeDetails.Department" placeholder="Department" />
+        <div class="card-header bg-dark text-white p-4 rounded-top-4">
+            <h2 class="mb-0">Employee Information Form</h2>
+        </div>
 
-    <input asp-for="EmployeeDetails.JoinDesignation" placeholder="Designation" />
- 
-    <h2>Social Media</h2>
+        <div class="card-body p-5">
 
-    <input asp-for="EmployeeSocialMedia.GitHubProfileURL" placeholder="GitHub" />
+            <form asp-action="Index" method="post">
 
-  
-    <button type="submit">Save</button>
+                <!-- Employee Details -->
+                <div class="mb-4">
+                    <h4 class="text-primary fw-bold border-bottom pb-2">
+                        Employee Details
+                    </h4>
+                </div>
 
-</form>
+                <div class="row">
+
+                    <div class="col-md-4 mb-4">
+                        <label asp-for="EmployeeDetails.JoiningDate" class="form-label fw-semibold">
+                            Joining Date
+                        </label>
+
+                        <input asp-for="EmployeeDetails.JoiningDate"
+                               type="date"
+                               class="form-control form-control-lg rounded-3 shadow-sm" />
+
+                        <span asp-validation-for="EmployeeDetails.JoiningDate"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <label asp-for="EmployeeDetails.Department"
+                               class="form-label fw-semibold">
+                            Department
+                        </label>
+
+                        <input asp-for="EmployeeDetails.Department"
+                               placeholder="Enter Department"
+                               class="form-control form-control-lg rounded-3 shadow-sm" />
+
+                        <span asp-validation-for="EmployeeDetails.Department"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <label asp-for="EmployeeDetails.JoinDesignation"
+                               class="form-label fw-semibold">
+                            Designation
+                        </label>
+
+                        <input asp-for="EmployeeDetails.JoinDesignation"
+                               placeholder="Enter Designation"
+                               class="form-control form-control-lg rounded-3 shadow-sm" />
+
+                        <span asp-validation-for="EmployeeDetails.JoinDesignation"
+                              class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <!-- Social Media -->
+                <div class="mt-5 mb-4">
+                    <h4 class="text-success fw-bold border-bottom pb-2">
+                        Social Media Information
+                    </h4>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="EmployeeSocialMedia.GitHubProfileURL"
+                               class="form-label fw-semibold">
+                            GitHub Profile
+                        </label>
+
+                        <input asp-for="EmployeeSocialMedia.GitHubProfileURL"
+                               placeholder="https://github.com/username"
+                               class="form-control form-control-lg rounded-3 shadow-sm" />
+
+                        <span asp-validation-for="EmployeeSocialMedia.GitHubProfileURL"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex gap-3 mt-4">
+
+                    <button type="submit"
+                            class="btn btn-primary btn-lg px-5 rounded-3 shadow">
+                        Save Employee
+                    </button>
+
+                    <button type="reset"
+                            class="btn btn-outline-secondary btn-lg px-5 rounded-3">
+                        Reset
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+@{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<table class="table table-bordered mt-5">
+
+    <thead>
+        <tr>
+            <th>Department</th>
+            <th>Designation</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model.EmployeesList)
+        {
+            <tr>
+                <td>@item.Department</td>
+                <td>@item.JoinDesignation</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
