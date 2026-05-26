@@ -14,25 +14,27 @@ namespace HR_Management.Controllers
             _Context = Context;
         }
         [HttpGet]
+
         public IActionResult Index()
         {
-            AppDbContext _Context1 = _Context;
-            var model = new EmployeeViewModel
-            {
-               EmployeeDetails = new EmployeeDitailse(),
+            EmployeeViewModel vm = new EmployeeViewModel();
 
-                EmployeeSocialMedia = new EmployeeSocialMedia(),
+            vm.EmployeesList = _Context.EmployeeDitailse
+                .Select(x => new EmployeeViewModel
+                {
+                    EmployeeDetails = new EmployeeDitailse
+                    {
+                        Department = x.Department,
+                        JoinDesignation = x.JoinDesignation
+                    }
+                }).ToList();
 
-                EmployeesList = _Context1.EmployeeDitailse.ToList()
-            };
-
-            return View(model);
+            return View(vm);
         }
-
         [HttpPost]
         public IActionResult Index(EmployeeViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var details = new EmployeeDitailse
                 {

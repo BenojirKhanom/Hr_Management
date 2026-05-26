@@ -7,8 +7,9 @@
             public EmployeeDitailse EmployeeDetails { get; set; }
 
             public EmployeeSocialMedia EmployeeSocialMedia { get; set; }
-     
-        public List<EmployeeDitailse> EmployeesList { get; set; }
+    
+            public List<EmployeeViewModel> EmployeesList { get; set; }
+    
     }
     }
 

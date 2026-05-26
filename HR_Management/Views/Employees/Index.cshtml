@@ -132,15 +132,17 @@
             <th>Designation</th>
         </tr>
     </thead>
-
     <tbody>
 
-        @foreach (var item in Model.EmployeesList)
+        @if (Model?.EmployeesList != null)
         {
-            <tr>
-                <td>@item.Department</td>
-                <td>@item.JoinDesignation</td>
-            </tr>
+            foreach (var item in Model.EmployeesList)
+            {
+                <tr>
+                    <td>@item.EmployeeDetails?.Department</td>
+                    <td>@item.EmployeeDetails?.JoinDesignation</td>
+                </tr>
+            }
         }
 
     </tbody>
