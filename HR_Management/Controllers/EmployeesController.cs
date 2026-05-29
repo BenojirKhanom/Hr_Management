@@ -8,7 +8,6 @@ namespace HR_Management.Controllers
     public class EmployeesController : Controller
     {
         private readonly AppDbContext _Context;
-
         public EmployeesController(AppDbContext Context)
         {
             _Context = Context;
